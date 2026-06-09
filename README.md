@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="assets/banner.png" alt="XREFS0-Recon">
+</p>
 ```text
 
     ░▒▓█ XREFS0 █▓▒░
