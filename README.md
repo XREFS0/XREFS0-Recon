@@ -1,14 +1,6 @@
 <p align="center">
   <img src="assets/masa.png" alt="XREFS0-Recon">
 </p>
-```text
-
-    ░▒▓█ XREFS0 █▓▒░
-    Cyber Intelligence & Domain Reconnaissance Platform
-    ─────────────────────────────────────────────────
-    Coded by MASA  |  Protocol: Dark Recon  |  v2.0
-
-```
 
 <p align="center">
   <img src="https://img.shields.io/badge/Version-2.0-ff4444?style=flat-square" alt="Version 2.0"/>
