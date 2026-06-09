@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.png" alt="XREFS0-Recon">
+  <img src="assets/masa.png" alt="XREFS0-Recon">
 </p>
 ```text
 
