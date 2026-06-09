@@ -1,114 +1,95 @@
-<p align="center">
-  <img src="https://img.shields.io/badge/XREFS0-v2.0-ff4444?style=for-the-badge&labelColor=0a0e1a" alt="XREFS0 v2.0"/>
-  <img src="https://img.shields.io/badge/Modules-38%2B-00d4ff?style=for-the-badge&labelColor=0a0e1a" alt="38+ Modules"/>
-  <img src="https://img.shields.io/badge/License-MIT-00ff88?style=for-the-badge&labelColor=0a0e1a" alt="MIT License"/>
-</p>
+```text
 
-<h1 align="center">XREFS0</h1>
-<p align="center"><b>Cyber Intelligence & Domain Reconnaissance Platform</b></p>
-<p align="center">
-  <i>Coded by <a href="https://github.com/XREFS0">MASA</a></i><br>
-  <b>Protocol:</b> Dark Recon
-</p>
+    ░▒▓█ XREFS0 █▓▒░
+    Cyber Intelligence & Domain Reconnaissance Platform
+    ─────────────────────────────────────────────────
+    Coded by MASA  |  Protocol: Dark Recon  |  v2.0
 
----
-
-## Overview
-
-XREFS0 is a comprehensive domain reconnaissance platform that integrates **38+ reconnaissance modules** into a single, streamlined CLI tool. It performs WHOIS lookups, subdomain enumeration across 8 free sources, full DNS analysis (A/AAAA/MX/NS/TXT/CNAME/SOA/AXFR), port scanning, technology fingerprinting, CMS detection, vulnerability assessment (SQLi / XSS / Open Redirect), and more — entirely from free, public sources with **zero API keys required**.
-
-Designed for security researchers, penetration testers, and blue teams who need deep, multi-vector reconnaissance without the overhead of managing disparate tools.
-
----
-
-## Features
-
-- **38+ Reconnaissance Modules** — WHOIS, subdomains (8 sources), DNS, SSL, WAF, ports, ASN, CMS (50+), S3, cloud, email, JS extraction, vulnerability scanning, and more
-- **Zero API Keys Required** — All sources are free, no registration needed
-- **Per-Subdomain Deep Scanning** — Port scan, SSL, screenshot, takeover check, dir enum, JS extract, favicon hash — applied to every discovered subdomain
-- **Parallel Execution Architecture** — Independent modules run concurrently across 6 orchestrated groups, reducing scan time by 60%+
-- **Severity-Graded Findings** — Results categorized as CRITICAL, HIGH, MEDIUM, INFO for clear prioritization
-- **Basic Vulnerability Assessment** — SQLi reflection, reflected XSS, open redirect, `.env` exposure checks
-- **11 Export Formats** — Terminal (Rich), HTML (dark cyber theme), JSON, YAML, CSV, XLSX, PDF, Markdown, screenshots, interactive D3.js graph, SQLite history database
-- **Batch & CIDR Scanning** — Scan multiple domains from a file or enumerate entire CIDR ranges
-- **Scan Profiles** — `full`, `quick`, `stealth`
-- **Proxy Support** — HTTP, HTTPS, SOCKS5
-- **Resume Capability** — SQLite-backed history database with `--resume`
-- **Rate Limiting & Retry** — Configurable delay, rate limit, and retry with exponential backoff
-- **`--only-modules`** — Execute a subset of modules for targeted scanning
-- **`--compact`** — Streamlined terminal output mode
-
----
-
-## Installation
-
-```bash
-# Install dependencies
-pip install -r requirements.txt
-
-# Verify installation
-python xrefs0.py --version
 ```
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Version-2.0-ff4444?style=flat-square" alt="Version 2.0"/>
+  <img src="https://img.shields.io/badge/Modules-38%2B-00d4ff?style=flat-square" alt="38+ Modules"/>
+  <img src="https://img.shields.io/badge/License-MIT-00ff88?style=flat-square" alt="MIT License"/>
+  <img src="https://img.shields.io/badge/Python-3.8%2B-3776AB?style=flat-square&logo=python" alt="Python 3.8+"/>
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-5a7a9a?style=flat-square" alt="Cross-platform"/>
+</p>
+
+---
+
+**XREFS0** is a unified domain reconnaissance engine that weaves **38+ modules** into a single command — from passive enumeration to active probing, from SSL analysis to CVE matching, from email harvesting to network graph visualization.
+
+No API keys. No scattered tools. One command, complete picture.
 
 ---
 
 ## Quick Start
 
 ```bash
-# Basic scan
-xrefs0 example.com
+pip install -r requirements.txt
 
-# Full export with HTML report + JSON data
-xrefs0 example.com --html report.html --json data.json
+# Full reconnaissance — HTML + JSON auto-generated
+python xrefs0.py example.com
 
-# Stealth scan through proxy
-xrefs0 example.com --profile stealth --proxy socks5://127.0.0.1:9050
+# Stealth scan through SOCKS5
+python xrefs0.py example.com --profile stealth --proxy socks5://127.0.0.1:9050
 
-# Targeted module execution
-xrefs0 example.com --only-modules whois subdomains dns ssl
-
-# Batch scan multiple domains
-xrefs0 --file domains.txt --html report_DOMAIN.html
+# Targeted scan (specific modules only)
+python xrefs0.py example.com --only-modules whois subdomains dns ssl
 ```
 
 ---
 
-## Modules
+## Architecture
 
-| Module | Description |
-|--------|-------------|
-| whois | Registrar, creation/expiry dates, domain status |
-| subdomains | Subdomain enumeration from 8 free public sources |
-| dns_bruteforce | DNS brute-force with customizable wordlist |
-| dns | Full DNS record resolution (A/AAAA/MX/NS/TXT/CNAME/SOA) + AXFR zone transfer check |
-| reverse_dns | PTR lookups + CIDR network enumeration |
-| real_ip | CDN/proxy bypass — real origin IP detection (7 methods) |
-| http | HTTP service probing, CDN detection, technology fingerprinting |
-| js_extract | JavaScript endpoint and secret extraction |
-| spider | Web link crawling for endpoint discovery |
-| ssl | SSL/TLS certificate analysis (validity, SANs, issuer, expiry) |
-| mail | Mail security posture — SPF, DKIM, DMARC |
-| security | Security headers audit, cookie flags, CORS misconfiguration |
-| waf | Web application firewall detection (15+ signatures) |
-| ports | TCP port scanning across 1000 ports with banner grabbing |
-| asn | ASN, ISP, country, city, geolocation lookup |
-| takeover | Subdomain takeover vulnerability check across 30+ cloud services |
-| s3 | AWS S3 bucket enumeration and accessibility check |
-| cloud | GCP cloud storage + Azure blob container scanning |
-| emails | Email address harvesting from public sources |
-| wayback | Wayback Machine archived URL mining |
-| commoncrawl | CommonCrawl index URL extraction |
-| dorks | Google dork query generation (40+ patterns) |
-| github | GitHub code and secret search for exposed credentials |
-| cve | CVE matching against detected technology stack |
-| cms | CMS fingerprinting (WordPress, Drupal, Joomla, etc.) |
-| dirb | Directory and file brute-force against live hosts |
-| swagger | OpenAPI/Swagger/GraphQL endpoint discovery |
-| cicd | CI/CD configuration file discovery (70+ patterns) |
-| docker | Docker registry exposure scanning |
-| favicon | Favicon hash calculation (mmh3, md5, SHA256) |
-| screenshot | Webpage screenshot capture |
-| graph | Interactive D3.js network graph visualization |
+XREFS0 operates in **6 parallel execution groups**, each running independent modules concurrently:
+
+| Phase | Modules | Description |
+|-------|---------|-------------|
+| **A** | WHOIS, Subdomains, Mail, Dorks | Passive intelligence gathering |
+| **B** | DNS, Reverse DNS, Real IP | Network resolution & CDN bypass |
+| **C** | HTTP, SSL, Ports | Service probing & certificate analysis |
+| **D** | Security, WAF, Takeover, Directories, Swagger, CI/CD, Docker | Application-layer scanning |
+| **E** | JS Extract, Spider, Wayback, CommonCrawl, Emails, S3, Cloud, GitHub, CVE, CMS | Deep content & vulnerability mining |
+| **F** | Favicon, Screenshots, Graph | Post-processing & visualization |
+
+Each phase is orchestrated with `ThreadPoolExecutor`, and modules within a phase run simultaneously — reducing total scan time by **60%+** compared to sequential execution.
+
+---
+
+## Capabilities
+
+| Domain | What XREFS0 Extracts |
+|--------|----------------------|
+| **WHOIS** | Registrar, creation/expiry, domain status, days until expiry |
+| **Subdomains** | Passive enumeration from 8 public sources (CRT, AlienVault, HackerTarget, DNSDumpster, RapidDNS, SecurityTrails, ThreatMiner, Anubis) |
+| **DNS** | A, AAAA, MX, NS, TXT, CNAME, SOA, PTR records + AXFR zone transfer check |
+| **DNS Brute-force** | Wordlist-driven subdomain resolution |
+| **Real IP** | CDN/Proxy bypass via 7 detection methods (MX, NS, SOA, subdomain resolution, etc.) |
+| **HTTP Probe** | Status codes, titles, server headers, redirect chains, CDN detection |
+| **Technology** | 40+ fingerprint patterns — frameworks, languages, web servers, analytics |
+| **SSL/TLS** | Certificate validity, issuer, subject, SANs, fingerprint, days remaining, expiry status |
+| **Port Scan** | 45 tier-1 TCP ports with banner grabbing |
+| **Security Headers** | HSTS, CSP, X-Frame-Options, X-Content-Type-Options, and 10+ more |
+| **Mail Security** | SPF presence, DKIM signing, DMARC policy |
+| **WAF Detection** | 15+ WAF signatures — Cloudflare, AWS WAF, ModSecurity, F5, Akamai |
+| **CVE Matching** | Technology-to-CVE mapping via NVD database |
+| **CMS Detection** | 50+ CMS fingerprints — WordPress, Drupal, Joomla, Magento, Shopify |
+| **Subdomain Takeover** | 30+ cloud service fingerprints |
+| **Cloud Storage** | AWS S3, GCP buckets, Azure blob containers |
+| **JS Extraction** | Endpoints, API routes, secrets from JavaScript files |
+| **Link Spider** | Recursive crawling for all discovered links |
+| **Wayback / CommonCrawl** | Historical URL mining from web archives |
+| **Google Dorks** | 40+ targeted dork queries |
+| **GitHub Recon** | Code search, repository discovery, credential scanning |
+| **Directory Enum** | 1000+ path brute-force |
+| **API Discovery** | OpenAPI, Swagger, GraphQL introspection |
+| **CI/CD Discovery** | 70+ file signatures — Jenkins, GitLab CI, GitHub Actions, Terraform |
+| **Docker Registry** | Exposed registry detection |
+| **Favicon Hash** | mmh3, MD5, SHA256 hashing |
+| **Screenshots** | Webpage capture via Playwright |
+| **Graph Visualization** | Interactive D3.js force-directed network graph |
+| **Vulnerability Scan** | SQLi reflection, XSS reflection, open redirect, `.env` exposure |
 
 ---
 
@@ -116,49 +97,131 @@ xrefs0 --file domains.txt --html report_DOMAIN.html
 
 | Flag | Format | Description |
 |------|--------|-------------|
-| `--html FILE` | HTML | Professional dark-theme report with collapsible sections |
-| `--json FILE` | JSON | Raw structured data export |
-| `--yaml FILE` | YAML | YAML data export |
-| `--csv FILE` | CSV | Tabular subdomain data |
-| `--xlsx FILE` | XLSX | Excel spreadsheet (multiple sheets) |
-| `--pdf FILE` | PDF | PDF report (requires puppeteer) |
-| `--markdown FILE` | Markdown | Lightweight text report |
+| `--html` | HTML | Dark-theme report with collapsible sections, all data in one file |
+| `--json` | JSON | Complete structured data dump |
+| `--yaml` | YAML | YAML-formatted export |
+| `--csv` | CSV | Subdomain table export |
+| `--xlsx` | XLSX | Multi-sheet Excel workbook |
+| `--pdf` | PDF | Print-ready report (requires puppeteer) |
+| `--markdown` | Markdown | Lightweight text summary |
+
+When `--html` and `--json` are omitted, they default to `report.html` and `data.json` automatically.
 
 ---
 
 ## Scan Profiles
 
-| Profile | Description |
-|---------|-------------|
-| `full` | All modules enabled, maximum coverage (default) |
-| `quick` | Throttled subdomains, ports, and spider; faster execution |
-| `stealth` | Minimal footprint — excludes brute-force, crawling, cloud scanning, CI/CD, docker |
+| Profile | Behavior |
+|---------|----------|
+| **`full`** (default) | All 38+ modules — maximum coverage, longest runtime |
+| **`quick`** | Throttled subdomains/ports/spider — balance of speed and depth |
+| **`stealth`** | Excludes brute-force, crawling, cloud, CI/CD, Docker — minimal footprint |
 
 ---
 
-## Connect
+## Installation
 
-<p align="center">
-  <a href="https://t.me/XREFS0_CHANNEL"><img src="https://img.shields.io/badge/Telegram-Channel-00d4ff?style=for-the-badge&logo=telegram&labelColor=0a0e1a" alt="Telegram Channel"/></a>
-  <a href="https://t.me/MrMasaOfficial"><img src="https://img.shields.io/badge/Telegram-Contact-ff4444?style=for-the-badge&logo=telegram&labelColor=0a0e1a" alt="Telegram Contact"/></a>
-  <a href="https://www.youtube.com/@XREFS0"><img src="https://img.shields.io/badge/YouTube-Channel-ff0000?style=for-the-badge&logo=youtube&labelColor=0a0e1a" alt="YouTube Channel"/></a>
-  <br>
-  <a href="https://github.com/XREFS0"><img src="https://img.shields.io/badge/GitHub-Organization-6e5494?style=for-the-badge&logo=github&labelColor=0a0e1a" alt="GitHub Org"/></a>
-  <a href="https://www.linkedin.com/in/mrmasaofficial"><img src="https://img.shields.io/badge/LinkedIn-Profile-0077b5?style=for-the-badge&logo=linkedin&labelColor=0a0e1a" alt="LinkedIn"/></a>
-  <a href="http://xrefs0.com/"><img src="https://img.shields.io/badge/Web-xrefs0.com-00ff88?style=for-the-badge&logo=google-chrome&labelColor=0a0e1a" alt="Website"/></a>
-</p>
+```bash
+git clone https://github.com/XREFS0/xrefs0.git
+cd xrefs0
+pip install -r requirements.txt
+python xrefs0.py --version
+```
+
+---
+
+## Examples
+
+```bash
+# Comprehensive scan with all outputs
+xrefs0 example.com --html report.html --json data.json --pdf report.pdf --md report.md
+
+# Batch scan (one report per domain)
+xrefs0 --file domains.txt --html report_DOMAIN.html --json data_DOMAIN.json
+
+# Deep dive — high concurrency, large scope
+xrefs0 example.com --threads 100 --timeout 30 -m 500
+
+# Rate-limited — polite scanning
+xrefs0 example.com --rate-limit 10 --delay 0.5 -T 20
+
+# CIDR network enumeration
+xrefs0 example.com --cidr 192.168.1.0/24 10.0.0.0/8
+
+# Resume interrupted scan
+xrefs0 example.com --resume
+
+# Custom wordlists
+xrefs0 example.com --dirs-wordlist my_dirs.txt --subs-wordlist my_subs.txt
+```
+
+---
+
+## Command-Line Reference
+
+Full documentation with every flag, module, and example is available in [`COMMANDS.md`](COMMANDS.md).
+
+```
+Target:       domain | --file FILE | --cidr CIDRS
+Output:       --html | --json | --yaml | --csv | --xlsx | --pdf | --markdown
+Control:      -T NUM | -t SEC | -m NUM | -p MODE | -d SEC | -rl NUM
+Network:      --proxy URL | --retry NUM | --resolvers IPs
+Modes:        --silent | --quiet | --compact | --resume | --log FILE
+Modules:      --only-modules [space separated names]
+Disable:      --no-http | --no-port | --no-dirb | --no-vuln | ... (30+ flags)
+```
+
+---
+
+## Project Structure
+
+```
+xrefs0/
+├── xrefs0.py           # Entry point
+├── config.yaml         # API keys configuration
+├── requirements.txt    # Dependencies
+├── README.md           # This document
+├── COMMANDS.md         # Full command reference
+├── LICENSE             # MIT License
+├── SECURITY.md         # Security policy
+├── CONTRIBUTING.md     # Contribution guidelines
+├── CODE_OF_CONDUCT.md  # Community standards
+├── wordlists/
+│   ├── subdomains.txt  # 874 subdomain names
+│   ├── dirs.txt        # 1011 directory paths
+│   └── resolvers.txt   # 16 public DNS resolvers
+└── modules/            # 38+ reconnaissance modules
+    ├── output.py       # HTML/JSON/CSV/XLSX/PDF engine
+    ├── dns_lookup.py   # Full DNS resolution
+    ├── http_probe.py   # HTTP service probing
+    ├── port_scan.py    # TCP port scanning
+    ├── ssl_analyzer.py # SSL/TLS certificate analysis
+    ├── cve_check.py    # CVE matching engine
+    ├── takeover_check.py
+    ├── graph_viz.py    # D3.js network graph
+    ├── screenshot.py   # Webpage capture
+    └── ...             # 30+ additional modules
+```
 
 ---
 
 ## License
 
-Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for full terms.
+**MIT License** — See [`LICENSE`](LICENSE) for the full text.
 
 You are free to use, modify, distribute, and sublicense this software for any purpose, including commercial applications, provided the original copyright notice is included.
 
 ---
 
 <p align="center">
-  <b>XREFS0</b> — Cyber Intelligence & Domain Reconnaissance<br>
-  <i>Coded by MASA</i> | Protocol: Dark Recon
+  <a href="https://t.me/XREFS0_CHANNEL"><img src="https://img.shields.io/badge/Telegram-Channel-00d4ff?style=flat-square&logo=telegram" alt="Telegram Channel"/></a>
+  <a href="https://t.me/MrMasaOfficial"><img src="https://img.shields.io/badge/Telegram-Contact-ff4444?style=flat-square&logo=telegram" alt="Telegram Contact"/></a>
+  <a href="https://www.youtube.com/@XREFS0"><img src="https://img.shields.io/badge/YouTube-XREFS0-ff0000?style=flat-square&logo=youtube" alt="YouTube"/></a>
+  <a href="https://github.com/XREFS0"><img src="https://img.shields.io/badge/GitHub-XREFS0-6e5494?style=flat-square&logo=github" alt="GitHub"/></a>
+  <a href="https://www.linkedin.com/in/mrmasaofficial"><img src="https://img.shields.io/badge/LinkedIn-mrmasaofficial-0077b5?style=flat-square&logo=linkedin" alt="LinkedIn"/></a>
+  <a href="http://xrefs0.com/"><img src="https://img.shields.io/badge/Web-xrefs0.com-00ff88?style=flat-square&logo=google-chrome" alt="Website"/></a>
+</p>
+
+<p align="center">
+  <sub>XREFS0 — Cyber Intelligence & Domain Reconnaissance &middot; Coded by MASA &middot; Protocol: Dark Recon</sub>
 </p>
