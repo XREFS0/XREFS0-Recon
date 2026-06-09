@@ -1,0 +1,48 @@
+class GoogleDorksGenerator:
+    def __init__(self, domain):
+        self.domain = domain
+
+    def generate(self):
+        dorks = [
+            f"site:{self.domain} intitle:index.of",
+            f"site:{self.domain} inurl:admin",
+            f"site:{self.domain} inurl:login",
+            f"site:{self.domain} filetype:pdf",
+            f"site:{self.domain} filetype:sql",
+            f"site:{self.domain} filetype:env",
+            f"site:{self.domain} filetype:conf",
+            f"site:{self.domain} filetype:bak",
+            f"site:{self.domain} filetype:dump",
+            f"site:{self.domain} filetype:log",
+            f"site:{self.domain} ext:sql",
+            f"site:{self.domain} ext:env",
+            f"site:{self.domain} ext:bak",
+            f"site:{self.domain} ext:json",
+            f"site:{self.domain} ext:xml",
+            f"site:{self.domain} ext:xls",
+            f"site:{self.domain} ext:xlsx",
+            f"site:{self.domain} ext:csv",
+            f"site:{self.domain} ext:php intitle:phpinfo",
+            f"site:{self.domain} ext:php inurl:config",
+            f"site:{self.domain} inurl:wp-admin",
+            f"site:{self.domain} inurl:wp-content",
+            f"site:{self.domain} inurl:wp-json",
+            f"site:{self.domain} inurl:backup",
+            f"site:{self.domain} inurl:test",
+            f"site:{self.domain} inurl:dev",
+            f"site:{self.domain} inurl:temp",
+            f"site:{self.domain} inurl:phpMyAdmin",
+            f"site:{self.domain} inurl:server-status",
+            f"site:{self.domain} inurl:robots.txt",
+            f"site:{self.domain} inurl:.git",
+            f"site:{self.domain} inurl:.svn",
+            f"site:{self.domain} inurl:.env",
+            f"site:{self.domain} intitle:\"dashboard\"",
+            f"site:{self.domain} intitle:\"login\" \"password\"",
+            f"site:{self.domain} \"password\" filetype:txt",
+            f"site:{self.domain} \"username\" filetype:txt",
+            f"site:{self.domain} \"api_key\" OR \"api-key\" OR \"apikey\"",
+            f"site:{self.domain} \"secret\" OR \"token\" OR \"credentials\"",
+            f"site:{self.domain} \"database\" filetype:php",
+        ]
+        return dorks
